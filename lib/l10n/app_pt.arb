@@ -1,0 +1,11 @@
+{
+  "defaultError": "Ocorreu um erro. Por favor, tente novamente. ",
+  "emailInUse": "O E-mail já existe",
+  "enter": "Entrar",
+  "fieldsIncorrect": "Os dados inseridos estão incorretos. ",
+  "fieldsInvalid": "Os dados inseridos são inválidos. ",
+  "fieldsRequired": "É obrigatório preencher todos os campos. ",
+  "pageNotFound": "Página não encontrada.",
+  "password": "Palavra-passe",
+  "serverError": "Ocorreu um erro no servidor. "
+}
