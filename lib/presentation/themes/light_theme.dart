@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 const Map<ColorsEnum, Color> colorList = {
   ColorsEnum.black: Color(0xff000000),
+  ColorsEnum.grey: Color(0xfff0f0f0),
   ColorsEnum.white: Color(0xffffffff),
   ColorsEnum.transparent: Colors.transparent,
 };
 
 enum ColorsEnum {
   black,
+  grey,
   white,
   transparent,
 }

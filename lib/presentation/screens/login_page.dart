@@ -16,6 +16,13 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.onPrimary,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _PasswordInput(),
+          _LoginButton(),
+        ],
+      ),
     );
   }
 }

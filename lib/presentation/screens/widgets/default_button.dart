@@ -21,7 +21,7 @@ class DefaultButton extends StatelessWidget {
               12,
             ),
           ),
-          backgroundColor: colorList[ColorsEnum.black],
+          backgroundColor: colorList[ColorsEnum.grey],
           shadowColor: colorList[ColorsEnum.transparent],
           textStyle: TextStyle(),
         ),
