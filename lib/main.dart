@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: LightTheme,
+      theme: lightTheme,
       darkTheme: DarkTheme,
       localizationsDelegates: [
         AppLocalizations.delegate,

@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../logic/bloc/login_bloc.dart';
+import 'widgets/default_button.dart';
+import 'widgets/password_textfield.dart';
 
 class LoginPage extends StatelessWidget {
   static Route route() {
@@ -41,7 +46,7 @@ class _LoginButton extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.submissionState != current.submissionState,
       builder: (c, state) {
-        return MainButton(
+        return DefaultButton(
           AppLocalizations.of(context).enter,
           () {
             context.read<LoginBloc>().add(const LoginSubmitted());

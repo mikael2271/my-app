@@ -1,6 +1,38 @@
 import 'package:flutter/material.dart';
 
-final ThemeData LightTheme = _buildLightTheme();
+const Map<ColorsEnum, Color> colorList = {
+  ColorsEnum.black: Color(0xff000000),
+  ColorsEnum.white: Color(0xffffffff),
+  ColorsEnum.transparent: Colors.transparent,
+};
+
+enum ColorsEnum {
+  black,
+  white,
+  transparent,
+}
+
+const Map fontSizeList = {
+  'error': 12.0,
+  'small': 14.0,
+  'regular': 16.0,
+  'button': 18.0,
+  'textfield': 18.0,
+  'textfieldhint': 20.0,
+  'title': 30.0,
+};
+
+const Map fontFamilyList = {
+  '': '',
+};
+
+const Map fontWeightList = {
+  'light': FontWeight.w300,
+  'semibold': FontWeight.w600,
+  'bold': FontWeight.w700,
+};
+
+final ThemeData lightTheme = _buildLightTheme();
 
 ThemeData _buildLightTheme() {
   final ThemeData base = ThemeData.light();
