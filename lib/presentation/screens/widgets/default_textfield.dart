@@ -14,7 +14,8 @@ class DefaultTextField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final bool? editable;
 
-  DefaultTextField({
+  const DefaultTextField({
+    Key? key,
     required this.hintText,
     this.errorText,
     required this.onChangedHandler,
@@ -24,7 +25,7 @@ class DefaultTextField extends StatelessWidget {
     this.maxLength,
     this.inputFormatters,
     this.editable = true,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

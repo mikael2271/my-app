@@ -34,9 +34,13 @@ dependencies:
   formz: ^0.4.1
   http: ^0.13.4
   intl: ^0.17.0
+  loader_overlay: ^2.1.0
   shared_preferences: ^2.0.13
+  top_snackbar_flutter: ^3.0.0+1
 
 dev_dependencies:
+  bloc_test: ^9.1.0
+  mocktail: ^0.3.0
   flutter_lints: ^1.0.0
   flutter_test:
     sdk: flutter

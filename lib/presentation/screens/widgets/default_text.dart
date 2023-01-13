@@ -9,7 +9,8 @@ class DefaultText extends StatelessWidget {
   final bool shouldCenter;
   final bool shouldRemoveEllipsis;
 
-  DefaultText({
+  const DefaultText({
+    Key? key,
     required this.text,
     required this.color,
     required this.fontSize,
@@ -17,7 +18,7 @@ class DefaultText extends StatelessWidget {
     required this.fontWeight,
     this.shouldCenter = false,
     this.shouldRemoveEllipsis = false,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

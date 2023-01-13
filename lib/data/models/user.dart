@@ -7,14 +7,14 @@ class User extends Equatable {
     this.email,
     this.token,
     this.name,
-    required this.lastTimeLoged,
+    required this.lastTimeLogged,
   });
 
   final String? email;
   String? token;
   String? name;
   String? cellphone;
-  DateTime lastTimeLoged;
+  DateTime lastTimeLogged;
 
   @override
   // TODO: implement props
@@ -24,7 +24,7 @@ class User extends Equatable {
     return {
       'email': email,
       'name': name,
-      'last_time_loged': lastTimeLoged.toString(),
+      'last_time_logged': lastTimeLogged.toString(),
     };
   }
 
@@ -32,8 +32,8 @@ class User extends Equatable {
     return User(
       email: map['email'],
       name: map['name'] ?? '',
-      lastTimeLoged: map.containsKey('last_time_loged')
-          ? DateTime.parse(map['last_time_loged'])
+      lastTimeLogged: map.containsKey('last_time_logged')
+          ? DateTime.parse(map['last_time_logged'])
           : DateTime(2020),
     );
   }

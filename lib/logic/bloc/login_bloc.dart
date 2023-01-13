@@ -4,7 +4,6 @@ import 'package:formz/formz.dart';
 
 import '../../core/constants/enums.dart';
 import '../../core/exceptions/http_exception.dart';
-import '../../data/models/user.dart';
 import '../../data/repositories/authentication_repository.dart';
 import '../../presentation/rules/email.dart';
 import '../../presentation/rules/password.dart';
@@ -13,12 +12,10 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc(this._authenticationRepository) : super(LoginInitial()) {
+  LoginBloc(this._authenticationRepository) : super(const LoginState()) {
     on<LoginEmailChanged>(_onEmailChanged);
     on<LoginPasswordChanged>(_onPasswordChanged);
-    on<LoginEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<LoginSubmitted>(_onSubmitted);
   }
 
   final AuthenticationRepository _authenticationRepository;
@@ -45,7 +42,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     ));
   }
 
-  //Clique do botão "login"
   void _onSubmitted(
     LoginSubmitted event,
     Emitter<LoginState> emit,
@@ -57,7 +53,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       emit(state.copyWith(submissionState: SubmissionState.invalid));
     } else {
       try {
-        User user = await _authenticationRepository.logIn(
+        await _authenticationRepository.logIn(
             email: state.email.value, password: state.password.value);
         emit(state.copyWith(
           submissionState: SubmissionState.submissionSuccess,

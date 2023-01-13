@@ -7,7 +7,8 @@ class DefaultButton extends StatelessWidget {
   final String buttonText;
   final VoidCallback buttonEvent;
 
-  DefaultButton(this.buttonText, this.buttonEvent);
+  const DefaultButton(this.buttonText, this.buttonEvent, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class DefaultButton extends StatelessWidget {
           ),
           backgroundColor: colorList[ColorsEnum.grey],
           shadowColor: colorList[ColorsEnum.transparent],
-          textStyle: TextStyle(),
+          textStyle: const TextStyle(),
         ),
         child: DefaultText(
           text: buttonText,

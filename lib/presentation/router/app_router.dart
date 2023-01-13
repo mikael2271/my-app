@@ -16,7 +16,7 @@ class AppRouter {
             create: (context) {
               return LoginBloc(AuthenticationRepository());
             },
-            child: LoginPage(),
+            child: const LoginPage(),
           ),
         );
       default:

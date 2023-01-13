@@ -1,5 +1,6 @@
 {
   "defaultError": "Ocorreu um erro. Por favor, tente novamente. ",
+  "email": "Email",
   "emailInUse": "O E-mail já existe",
   "enter": "Entrar",
   "fieldsIncorrect": "Os dados inseridos estão incorretos. ",
