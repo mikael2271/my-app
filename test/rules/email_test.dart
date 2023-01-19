@@ -6,11 +6,11 @@ void main() {
   const emailString = 'mock-email@teste.com';
   group('Email', () {
     group('constructors', () {
-      test('pure creates correct instance', (() {
+      test('pure creates correct instance', () {
         const email = Email.pure();
         expect(email.value, '');
         expect(email.pure, true);
-      }));
+      });
 
       test('dirty creates correct instance', () {
         const email = Email.dirty(emailString);
@@ -28,7 +28,7 @@ void main() {
 
         test('is invalid', () {
           expect(
-            const Email.dirty("invalid-email").error,
+            const Email.dirty('invalid-email').error,
             RulesValidationError.invalid,
           );
         });

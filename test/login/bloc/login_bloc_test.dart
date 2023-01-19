@@ -20,26 +20,32 @@ void main() {
   });
 
   group('LoginBloc', () {
-    test('initial state is LoginState', (() {
+    test('initial state is LoginState', () {
       final loginBloc = LoginBloc(
         authenticationRepository,
       );
       expect(loginBloc.state, const LoginState());
-    }));
+    });
   });
 
-  group('LoginSubmitted', (() {
+  group('LoginSubmitted', () {
     blocTest<LoginBloc, LoginState>(
       'emits [submissionInProgress, submissionSuccess] '
       'when login succeeds',
       setUp: () {
         when(
           () => authenticationRepository.logIn(
-              email: 'email@teste.com', password: 'password123!'),
-        ).thenAnswer((_) => Future<User>.value(User(
+            email: 'email@teste.com',
+            password: 'password123!',
+          ),
+        ).thenAnswer(
+          (_) => Future<User>.value(
+            User(
               email: 'email@teste.com',
               lastTimeLogged: DateTime.now(),
-            )));
+            ),
+          ),
+        );
       },
       build: () => LoginBloc(
         authenticationRepository,
@@ -80,7 +86,9 @@ void main() {
       setUp: () {
         when(
           () => authenticationRepository.logIn(
-              email: 'email@teste.com', password: 'password123!'),
+            email: 'email@teste.com',
+            password: 'password123!',
+          ),
         ).thenThrow('fail');
       },
       build: () => LoginBloc(
@@ -116,5 +124,5 @@ void main() {
         ),
       ],
     );
-  }));
+  });
 }

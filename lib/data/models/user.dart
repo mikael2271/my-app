@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
+// ignore: must_be_immutable
 class User extends Equatable {
   User({
     this.email,
@@ -10,6 +11,19 @@ class User extends Equatable {
     required this.lastTimeLogged,
   });
 
+  factory User.fromJson(String source) =>
+      User.fromMap(Map.castFrom(json.decode(source) as Map));
+
+  factory User.fromMap(Map<String, dynamic> map) {
+    return User(
+      email: map['email'].toString(),
+      name: (map['name'] ?? '').toString(),
+      lastTimeLogged: map.containsKey('last_time_logged')
+          ? DateTime.parse(map['last_time_logged'].toString())
+          : DateTime(2020),
+    );
+  }
+
   final String? email;
   String? token;
   String? name;
@@ -17,7 +31,6 @@ class User extends Equatable {
   DateTime lastTimeLogged;
 
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 
   Map<String, dynamic> toMap() {
@@ -28,17 +41,5 @@ class User extends Equatable {
     };
   }
 
-  factory User.fromMap(Map<String, dynamic> map) {
-    return User(
-      email: map['email'],
-      name: map['name'] ?? '',
-      lastTimeLogged: map.containsKey('last_time_logged')
-          ? DateTime.parse(map['last_time_logged'])
-          : DateTime(2020),
-    );
-  }
-
   String toJson() => json.encode(toMap());
-
-  factory User.fromJson(String source) => User.fromMap(json.decode(source));
 }

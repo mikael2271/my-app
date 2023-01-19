@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 import '../../themes/light_theme.dart';
 import 'default_text.dart';
@@ -12,7 +11,7 @@ enum SnackbarType {
 }
 
 class CustomSnackbar {
-  static buildCustomSnackbar(
+  static void buildCustomSnackbar(
     BuildContext context,
     SnackbarType type,
     String? message,
@@ -41,9 +40,9 @@ class CustomSnackbar {
                   ? message
                   : AppLocalizations.of(context).defaultError,
               color: colorList[ColorsEnum.white]!,
-              fontSize: fontSizeList['regular'],
-              fontFamily: '', //fontFamilyList['MyriadPro'], todo: settar a font
-              fontWeight: fontWeightList['light'],
+              fontSize: fontSizeList['regular']!,
+              fontFamily: '', //fontFamilyList['MyriadPro'], todo: set font
+              fontWeight: fontWeightList['light']!,
             ),
           ),
         ),

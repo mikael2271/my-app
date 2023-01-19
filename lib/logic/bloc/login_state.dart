@@ -1,12 +1,13 @@
 part of 'login_bloc.dart';
 
 class LoginState extends Equatable {
-  const LoginState(
-      {this.status = FormzStatus.pure,
-      this.submissionState = SubmissionState.empty,
-      this.error,
-      this.email = const Email.pure(),
-      this.password = const Password.pure()});
+  const LoginState({
+    this.status = FormzStatus.pure,
+    this.submissionState = SubmissionState.empty,
+    this.error,
+    this.email = const Email.pure(),
+    this.password = const Password.pure(),
+  });
 
   final FormzStatus status;
   final SubmissionState submissionState;

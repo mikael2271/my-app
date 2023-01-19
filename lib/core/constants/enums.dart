@@ -1,7 +1,7 @@
 enum RulesValidationError {
   empty,
   invalid,
-} //usado nas regras dos inputs
+} //rules from input
 
 enum SubmissionState {
   empty,
@@ -13,4 +13,4 @@ enum SubmissionState {
   submissionSuccess,
   submissionFailure,
   submissionServerError
-} // usado no handler quando é feito um pedido à api
+} // states used in bloc to handle requests to api

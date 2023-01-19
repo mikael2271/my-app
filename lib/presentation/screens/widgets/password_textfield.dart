@@ -3,12 +3,6 @@ import 'package:flutter/material.dart';
 import '../../themes/light_theme.dart';
 
 class PasswordTextField extends StatefulWidget {
-  final String hintText;
-  final String? errorText;
-  final Function(String) onChangedHandler;
-  final VoidCallback? onEditingCompleteHandler;
-  final TextInputAction? textInputAction;
-
   const PasswordTextField({
     Key? key,
     required this.hintText,
@@ -18,18 +12,22 @@ class PasswordTextField extends StatefulWidget {
     this.textInputAction,
   }) : super(key: key);
 
+  final String hintText;
+  final String? errorText;
+  final void Function(String) onChangedHandler;
+  final VoidCallback? onEditingCompleteHandler;
+  final TextInputAction? textInputAction;
+
   @override
   State<PasswordTextField> createState() => _PasswordTextFieldState();
 }
 
 class _PasswordTextFieldState extends State<PasswordTextField> {
-  var passwordIsObscure = true;
+  bool passwordIsObscure = true;
 
   void passwordVisibilitySwitch() {
-    passwordIsObscure = !passwordIsObscure;
-
     setState(() {
-      passwordIsObscure;
+      passwordIsObscure = !passwordIsObscure;
     });
   }
 
@@ -41,23 +39,24 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
         labelStyle: TextStyle(
           color: colorList[ColorsEnum.black],
           fontSize: fontSizeList['textfieldhint'],
-          //fontFamily: fontFamilyList[''] todo: settar a font
+          //fontFamily: fontFamilyList[''] todo: set font
           fontWeight: fontWeightList['light'],
         ),
         floatingLabelStyle: TextStyle(
           color: colorList[ColorsEnum.black],
           fontSize: fontSizeList['textfield'],
-          //fontFamily: fontFamilyList[''] todo: settar a font
+          //fontFamily: fontFamilyList[''] todo: set font
           fontWeight: fontWeightList['light'],
         ),
         errorText: widget.errorText,
         errorStyle: TextStyle(
           fontSize: fontSizeList['error'],
-          //fontFamily: fontFamilyList[''] todo: settar a font
+          //fontFamily: fontFamilyList[''] todo: set font
           fontWeight: fontWeightList['light'],
         ),
         focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: colorList[ColorsEnum.black]!)),
+          borderSide: BorderSide(color: colorList[ColorsEnum.black]!),
+        ),
         suffixIcon: IconButton(
           icon:
               Icon(passwordIsObscure ? Icons.visibility_off : Icons.visibility),
@@ -69,7 +68,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       style: TextStyle(
         color: colorList[ColorsEnum.black],
         fontSize: fontSizeList['textfield'],
-        //fontFamily: fontFamilyList[''] todo: settar a font
+        //fontFamily: fontFamilyList[''] todo: set font
         fontWeight: fontWeightList['semibold'],
       ),
       cursorColor: colorList[ColorsEnum.black],

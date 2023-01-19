@@ -3,12 +3,12 @@ import 'package:formz/formz.dart';
 import '../../core/constants/enums.dart';
 
 class ConfirmedPassword extends FormzInput<String, RulesValidationError> {
-  final String password;
+  const ConfirmedPassword.dirty({required this.password, String value = ''})
+      : super.dirty(value);
 
   const ConfirmedPassword.pure({this.password = ''}) : super.pure('');
 
-  const ConfirmedPassword.dirty({required this.password, String value = ''})
-      : super.dirty(value);
+  final String password;
 
   @override
   RulesValidationError? validator(String value) {

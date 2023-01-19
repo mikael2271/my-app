@@ -10,9 +10,9 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final AppRouter _appRouter = AppRouter();
-
   MyApp({Key? key}) : super(key: key);
+
+  final AppRouter _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {

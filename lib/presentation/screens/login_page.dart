@@ -14,7 +14,7 @@ import 'widgets/password_textfield.dart';
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
-  static Route route() {
+  static Route<dynamic> route() {
     return MaterialPageRoute<void>(builder: (_) => const LoginPage());
   }
 
@@ -38,7 +38,10 @@ class LoginPage extends StatelessWidget {
             //handle success
 
             Navigator.pushNamedAndRemoveUntil(
-                context, 'newRoute', (route) => false);
+              context,
+              'newRoute',
+              (route) => false,
+            );
             return;
           }
 

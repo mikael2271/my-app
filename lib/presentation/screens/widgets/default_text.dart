@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
 
 class DefaultText extends StatelessWidget {
-  final String text;
-  final Color color;
-  final double fontSize;
-  final String fontFamily;
-  final FontWeight fontWeight;
-  final bool shouldCenter;
-  final bool shouldRemoveEllipsis;
-
   const DefaultText({
     Key? key,
     required this.text,
@@ -19,6 +11,14 @@ class DefaultText extends StatelessWidget {
     this.shouldCenter = false,
     this.shouldRemoveEllipsis = false,
   }) : super(key: key);
+
+  final String text;
+  final Color color;
+  final double fontSize;
+  final String fontFamily;
+  final FontWeight fontWeight;
+  final bool shouldCenter;
+  final bool shouldRemoveEllipsis;
 
   @override
   Widget build(BuildContext context) {

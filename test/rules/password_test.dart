@@ -6,11 +6,11 @@ void main() {
   const passwordString = 'mock-password';
   group('Password', () {
     group('constructors', () {
-      test('pure creates correct instance', (() {
+      test('pure creates correct instance', () {
         const password = Password.pure();
         expect(password.value, '');
         expect(password.pure, true);
-      }));
+      });
 
       test('dirty creates correct instance', () {
         const password = Password.dirty(passwordString);
@@ -35,7 +35,7 @@ void main() {
 
         test('is valid when fill every requirement', () {
           expect(
-            const Password.dirty(passwordString + "123!").error,
+            const Password.dirty('${passwordString}123!').error,
             isNull,
           );
         });

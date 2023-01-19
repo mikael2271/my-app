@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_dynamic_calls
+
 import 'dart:convert';
 import 'dart:io';
 
@@ -8,17 +10,18 @@ import '../models/user.dart';
 import '../services/web_service.dart';
 
 class AuthenticationApi extends WebService {
-  ///Sucesso: retorna o User
-  ///Insucesso: Retorna a exceção
+  /// Success: return User
+  /// Failure: return exception
 
   Future<User> logIn({required String email, required String password}) async {
     final response = await post(
-        obj: jsonEncode({
-          "email": email,
-          "password": password,
-          "device_name": await getDeviceName()
-        }),
-        endpoint: '/auth/login');
+      obj: jsonEncode({
+        'email': email,
+        'password': password,
+        'device_name': await getDeviceName()
+      }),
+      endpoint: '/auth/login',
+    );
 
     if (response.statusCode != 200) {
       if (response.statusCode == 500) {
@@ -34,32 +37,34 @@ class AuthenticationApi extends WebService {
     }
   }
 
-  /// Faz o pedido de registo na api '/auth/register'
-  /// Sucesso: Retorna o user recebido
-  /// Insucesso: Retorna a exceção do erro
+  /// Register a [User] `/auth/register`
+  /// Success: return User
+  /// Failure: return exception
 
-  Future<User> register(
-      {required String username,
-      required String password,
-      required String confirmPassword,
-      required String email,
-      required String cellphone}) async {
+  Future<User> register({
+    required String username,
+    required String password,
+    required String confirmPassword,
+    required String email,
+    required String cellphone,
+  }) async {
     final response = await post(
-        obj: jsonEncode({
-          "name": username,
-          "email": email,
-          "password": password,
-          "password_confirmation": confirmPassword,
-          "cellphone": cellphone,
-          "device_name": await getDeviceName()
-        }),
-        endpoint: '/auth/register');
+      obj: jsonEncode({
+        'name': username,
+        'email': email,
+        'password': password,
+        'password_confirmation': confirmPassword,
+        'cellphone': cellphone,
+        'device_name': await getDeviceName()
+      }),
+      endpoint: '/auth/register',
+    );
 
     if (response.statusCode != 200) {
       if (response.statusCode == 500) {
         throw ServerFailure();
       }
-      if (response.body.contains("The email has already been taken.")) {
+      if (response.body.contains('The email has already been taken.')) {
         throw AuthenticationRegisterEmailInUseFailure();
       }
       throw RequestFailure();
@@ -71,17 +76,18 @@ class AuthenticationApi extends WebService {
     }
   }
 
-  /// Faz o pedido de reset pw para '/auth/forgot-password'
-  /// Sucesso: retorna o token recebido para envio na alteração de pw
-  /// Insucesso: Retorna a exceção do erro
+  /// Reset password `/auth/forgot-password`
+  /// Success: return token received to sent with password change
+  /// Failure: return exception
 
   Future<String> forgotPassword({required String email}) async {
     final response = await post(
-        obj: jsonEncode({
-          "email": email,
-          "device_name": await getDeviceName(),
-        }),
-        endpoint: '/auth/forgot-password');
+      obj: jsonEncode({
+        'email': email,
+        'device_name': await getDeviceName(),
+      }),
+      endpoint: '/auth/forgot-password',
+    );
 
     if (response.statusCode != 200) {
       if (response.statusCode == 500) {
@@ -90,32 +96,34 @@ class AuthenticationApi extends WebService {
       throw RequestFailure();
     }
     try {
-      return json.decode(response.body)['content']['token'];
+      return json.decode(response.body)['content']['token'] as String;
     } catch (e) {
-      throw RequestFailure;
+      throw RequestFailure();
     }
   }
 
-  /// Faz pedido de alteração de pw para 'auth/change-password'
-  /// Sucesso: Retorna true
-  /// Insucesso: Retorna a exceção do erro
+  /// Change password `auth/change-password`
+  /// Success: return true
+  /// Failure: return exception
 
-  Future<void> changePassword(
-      {required String email,
-      required String token,
-      required String digits,
-      required String password,
-      required String confirmPassword}) async {
+  Future<void> changePassword({
+    required String email,
+    required String token,
+    required String digits,
+    required String password,
+    required String confirmPassword,
+  }) async {
     final response = await put(
-        obj: jsonEncode({
-          "email": email,
-          "token": token,
-          "digits": digits,
-          "password": password,
-          "password_confirmation": confirmPassword,
-          "device_name": await getDeviceName()
-        }),
-        endpoint: '/auth/change-password');
+      obj: jsonEncode({
+        'email': email,
+        'token': token,
+        'digits': digits,
+        'password': password,
+        'password_confirmation': confirmPassword,
+        'device_name': await getDeviceName()
+      }),
+      endpoint: '/auth/change-password',
+    );
 
     if (response.statusCode != 200) {
       if (response.statusCode == 500) {
@@ -125,16 +133,15 @@ class AuthenticationApi extends WebService {
     }
   }
 
-  ///Devolve o nome do dispositivo - Plugin device_info
-  ///No caso de não ser necessário remover o plugin
+  /// Retrieve device name - Plugin device_info
 
   Future<String> getDeviceName() async {
-    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    final deviceInfo = DeviceInfoPlugin();
     if (Platform.isAndroid) {
-      AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+      final androidInfo = await deviceInfo.androidInfo;
       return androidInfo.model;
     } else /*if (Platform.isIOS)*/ {
-      IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
+      final iosInfo = await deviceInfo.iosInfo;
       return iosInfo.utsname.machine;
     }
   }

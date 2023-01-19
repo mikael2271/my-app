@@ -4,11 +4,11 @@ import '../../themes/light_theme.dart';
 import 'default_text.dart';
 
 class DefaultButton extends StatelessWidget {
-  final String buttonText;
-  final VoidCallback buttonEvent;
-
   const DefaultButton(this.buttonText, this.buttonEvent, {Key? key})
       : super(key: key);
+
+  final String buttonText;
+  final VoidCallback buttonEvent;
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +26,14 @@ class DefaultButton extends StatelessWidget {
           shadowColor: colorList[ColorsEnum.transparent],
           textStyle: const TextStyle(),
         ),
+        onPressed: buttonEvent,
         child: DefaultText(
           text: buttonText,
           color: colorList[ColorsEnum.black]!,
-          fontSize: fontSizeList['button'],
-          fontFamily: '', //fontFamilyList['MyriadPro'], todo: settar a font
-          fontWeight: fontWeightList['semibold'],
+          fontSize: fontSizeList['button']!,
+          fontFamily: '', //fontFamilyList['MyriadPro'], todo: set font
+          fontWeight: fontWeightList['semibold']!,
         ),
-        onPressed: buttonEvent,
       ),
     );
   }

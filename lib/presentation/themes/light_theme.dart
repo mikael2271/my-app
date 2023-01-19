@@ -14,7 +14,7 @@ enum ColorsEnum {
   transparent,
 }
 
-const Map fontSizeList = {
+const Map<String, double> fontSizeList = {
   'error': 12.0,
   'small': 14.0,
   'regular': 16.0,
@@ -24,11 +24,11 @@ const Map fontSizeList = {
   'title': 30.0,
 };
 
-const Map fontFamilyList = {
+const Map<String, String> fontFamilyList = {
   '': '',
 };
 
-const Map fontWeightList = {
+const Map<String, FontWeight> fontWeightList = {
   'light': FontWeight.w300,
   'semibold': FontWeight.w600,
   'bold': FontWeight.w700,
@@ -37,7 +37,7 @@ const Map fontWeightList = {
 final ThemeData lightTheme = _buildLightTheme();
 
 ThemeData _buildLightTheme() {
-  final ThemeData base = ThemeData.light();
+  final base = ThemeData.light();
   return base.copyWith(
     backgroundColor: Colors.white,
     primaryColor: const Color(0xff004eff),

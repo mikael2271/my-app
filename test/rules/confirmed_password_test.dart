@@ -6,15 +6,17 @@ void main() {
   const passwordString = 'mock-password';
   group('Password', () {
     group('constructors', () {
-      test('pure creates correct instance', (() {
+      test('pure creates correct instance', () {
         const confirmedPassword = ConfirmedPassword.pure();
         expect(confirmedPassword.value, '');
         expect(confirmedPassword.pure, true);
-      }));
+      });
 
       test('dirty creates correct instance', () {
         const confirmedPassword = ConfirmedPassword.dirty(
-            password: passwordString, value: passwordString);
+          password: passwordString,
+          value: passwordString,
+        );
         expect(confirmedPassword.value, passwordString);
         expect(confirmedPassword.pure, false);
       });
@@ -30,8 +32,9 @@ void main() {
         test('is invalid when the passwords does not match', () {
           expect(
             const ConfirmedPassword.dirty(
-                    password: passwordString, value: "wrongMatch")
-                .error,
+              password: passwordString,
+              value: 'wrongMatch',
+            ).error,
             RulesValidationError.invalid,
           );
         });
@@ -39,8 +42,9 @@ void main() {
         test('is valid when the passwords matches', () {
           expect(
             const ConfirmedPassword.dirty(
-                    password: passwordString, value: passwordString)
-                .error,
+              password: passwordString,
+              value: passwordString,
+            ).error,
             isNull,
           );
         });
