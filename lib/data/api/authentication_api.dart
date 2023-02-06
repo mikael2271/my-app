@@ -10,7 +10,9 @@ import '../models/user.dart';
 import '../services/web_service.dart';
 
 class AuthenticationApi extends WebService {
-  /// Success: return User
+  AuthenticationApi({super.httpClient});
+
+  /// Success: return [User]
   /// Failure: return exception
 
   Future<User> logIn({required String email, required String password}) async {
@@ -18,7 +20,7 @@ class AuthenticationApi extends WebService {
       obj: jsonEncode({
         'email': email,
         'password': password,
-        'device_name': await getDeviceName()
+        //'device_name': await getDeviceName()
       }),
       endpoint: '/auth/login',
     );
@@ -46,7 +48,6 @@ class AuthenticationApi extends WebService {
     required String password,
     required String confirmPassword,
     required String email,
-    required String cellphone,
   }) async {
     final response = await post(
       obj: jsonEncode({
@@ -54,8 +55,7 @@ class AuthenticationApi extends WebService {
         'email': email,
         'password': password,
         'password_confirmation': confirmPassword,
-        'cellphone': cellphone,
-        'device_name': await getDeviceName()
+        //'device_name': await getDeviceName()
       }),
       endpoint: '/auth/register',
     );
@@ -84,7 +84,7 @@ class AuthenticationApi extends WebService {
     final response = await post(
       obj: jsonEncode({
         'email': email,
-        'device_name': await getDeviceName(),
+        //'device_name': await getDeviceName(),
       }),
       endpoint: '/auth/forgot-password',
     );
@@ -120,7 +120,7 @@ class AuthenticationApi extends WebService {
         'digits': digits,
         'password': password,
         'password_confirmation': confirmPassword,
-        'device_name': await getDeviceName()
+        //'device_name': await getDeviceName()
       }),
       endpoint: '/auth/change-password',
     );

@@ -35,14 +35,12 @@ class AuthenticationRepository {
     required String password,
     required String confirmPassword,
     required String email,
-    required String cellphone,
   }) async {
     final user = await _authenticationApi.register(
       username: username,
       password: password,
       confirmPassword: confirmPassword,
       email: email,
-      cellphone: cellphone,
     );
 
     await saveUserLocally(user);
