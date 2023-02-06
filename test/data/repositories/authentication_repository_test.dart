@@ -35,7 +35,9 @@ void main() {
       test('logIn correctly', () async {
         try {
           await authenticationRepository.logIn(
-              email: email, password: password);
+            email: email,
+            password: password,
+          );
         } catch (_) {}
         verify(() => authenticationApi.logIn(email: email, password: password))
             .called(1);

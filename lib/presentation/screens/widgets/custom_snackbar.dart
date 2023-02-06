@@ -17,7 +17,7 @@ class CustomSnackbar {
     String? message,
   ) {
     showTopSnackBar(
-      Overlay.of(context)!,
+      Overlay.of(context),
       Container(
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(

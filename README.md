@@ -6,5 +6,7 @@ This already includes a basic structure to connect to a Rest Api and a model to 
 Unit test
 - Rules
 - Bloc
+- Api
+- Repositories
 
 Widget test

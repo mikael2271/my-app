@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class DefaultText extends StatelessWidget {
   const DefaultText({
-    Key? key,
+    super.key,
     required this.text,
     required this.color,
     required this.fontSize,
@@ -10,7 +10,7 @@ class DefaultText extends StatelessWidget {
     required this.fontWeight,
     this.shouldCenter = false,
     this.shouldRemoveEllipsis = false,
-  }) : super(key: key);
+  });
 
   final String text;
   final Color color;

@@ -5,7 +5,7 @@ import '../../core/constants/enums.dart';
 
 class Email extends FormzInput<String, RulesValidationError> {
   const Email.pure() : super.pure('');
-  const Email.dirty([String value = '']) : super.dirty(value);
+  const Email.dirty([super.value = '']) : super.dirty();
 
   @override
   RulesValidationError? validator(String value) {

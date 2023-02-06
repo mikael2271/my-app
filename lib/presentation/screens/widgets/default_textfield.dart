@@ -5,7 +5,7 @@ import '../../themes/light_theme.dart';
 
 class DefaultTextField extends StatelessWidget {
   const DefaultTextField({
-    Key? key,
+    super.key,
     required this.hintText,
     this.errorText,
     required this.onChangedHandler,
@@ -15,7 +15,7 @@ class DefaultTextField extends StatelessWidget {
     this.maxLength,
     this.inputFormatters,
     this.editable = true,
-  }) : super(key: key);
+  });
 
   final String hintText;
   final String? errorText;

@@ -4,13 +4,13 @@ import '../../themes/light_theme.dart';
 
 class PasswordTextField extends StatefulWidget {
   const PasswordTextField({
-    Key? key,
+    super.key,
     required this.hintText,
     required this.errorText,
     required this.onChangedHandler,
     this.onEditingCompleteHandler,
     this.textInputAction,
-  }) : super(key: key);
+  });
 
   final String hintText;
   final String? errorText;

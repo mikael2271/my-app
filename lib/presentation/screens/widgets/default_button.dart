@@ -4,8 +4,7 @@ import '../../themes/light_theme.dart';
 import 'default_text.dart';
 
 class DefaultButton extends StatelessWidget {
-  const DefaultButton(this.buttonText, this.buttonEvent, {Key? key})
-      : super(key: key);
+  const DefaultButton(this.buttonText, this.buttonEvent, {super.key});
 
   final String buttonText;
   final VoidCallback buttonEvent;

@@ -26,7 +26,6 @@ class AuthenticationRepository {
   }
 
   /// Register for a given [username], [password], [confirmPassword], [email]
-  /// and [cellphone]
   /// Success: return [User]
   /// Failure: throw exception
 

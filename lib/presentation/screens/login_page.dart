@@ -12,7 +12,7 @@ import 'widgets/default_button.dart';
 import 'widgets/password_textfield.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   static Route<dynamic> route() {
     return MaterialPageRoute<void>(builder: (_) => const LoginPage());

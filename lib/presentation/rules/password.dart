@@ -4,7 +4,7 @@ import '../../core/constants/enums.dart';
 
 class Password extends FormzInput<String, RulesValidationError> {
   const Password.pure() : super.pure('');
-  const Password.dirty([String value = '']) : super.dirty(value);
+  const Password.dirty([super.value = '']) : super.dirty();
 
   static final _passwordRegExp =
       RegExp(r'^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!$#%.,_?():;@]).*$');
